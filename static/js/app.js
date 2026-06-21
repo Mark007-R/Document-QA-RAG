@@ -323,7 +323,7 @@ function addMessage(text, type, isLoading = false, processingTime = null) {
     msgDiv.id = msgId;
     msgDiv.className = `message ${type}-msg`;
     
-    const label = type === 'user' ? 'You' : 'RAG_LEO';
+    const label = type === 'user' ? 'You' : 'RagLeo';
     const timestamp = new Date().toLocaleTimeString();
     
     let metaHtml = `<div class="message-meta">${timestamp}`;

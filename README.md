@@ -1,8 +1,8 @@
-# RAG_LEO - Production-Grade RAG Document Q&A System
+# RagLeo - Production-Grade RAG Document Q&A System
 
 ## Overview
 
-RAG_LEO is a **production-ready** Retrieval-Augmented Generation (RAG) system for PDF document Q&A. Built with **Flask**, **FAISS**, **LangChain**, and powered by **Groq's Llama 3 API**, it provides fast, accurate, and scalable document understanding.
+RagLeo is a **production-ready** Retrieval-Augmented Generation (RAG) system for PDF document Q&A. Built with **Flask**, **FAISS**, **LangChain**, and powered by **Groq's Llama 3 API**, it provides fast, accurate, and scalable document understanding.
 
 ### Key Features
 
@@ -27,7 +27,7 @@ RAG_LEO is a **production-ready** Retrieval-Augmented Generation (RAG) system fo
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                   RAG_LEO Flask App                      │
+│                   RagLeo Flask App                       │
 │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  │
 │  │   Routes     │  │   Services   │  │  Middleware  │  │
 │  └──────────────┘  └──────────────┘  └──────────────┘  │
@@ -46,7 +46,7 @@ RAG_LEO is a **production-ready** Retrieval-Augmented Generation (RAG) system fo
 ## Project Structure
 
 ```
-RAG_LEO/
+RagLeo/
 ├── app.py                      # Application entry point & route definitions
 ├── requirements.txt            # Python dependencies
 ├── pyproject.toml              # Tool configuration (black, pytest, mypy)
@@ -103,7 +103,7 @@ RAG_LEO/
 
 ```bash
 git clone <repository-url>
-cd RAG_LEO
+cd RagLeo
 ```
 
 ### 2. Create a Virtual Environment

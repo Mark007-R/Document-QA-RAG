@@ -1,7 +1,7 @@
 
 
 __version__ = "1.0.0"
-__author__ = "RAG_LEO Team"
+__author__ = "RagLeo Team"
 
 # Make key imports available at package level
 from src.config import settings

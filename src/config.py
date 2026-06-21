@@ -6,7 +6,7 @@ from functools import lru_cache
 
 class Settings(BaseSettings):
     
-    APP_NAME: str = "RAG_LEO"
+    APP_NAME: str = "RagLeo"
     APP_VERSION: str = "2.0.0"
     DEBUG: bool = False
     TESTING: bool = False

@@ -1,5 +1,5 @@
 """
-Unit tests for RAG_LEO application.
+Unit tests for RagLeo application.
 Tests core functionality including document upload, query, and deletion.
 """
 import pytest
