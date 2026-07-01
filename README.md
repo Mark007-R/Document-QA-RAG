@@ -1,5 +1,7 @@
 # RagLeo - Production-Grade RAG Document Q&A System
 
+> 🔗 **Live demo:** https://iambatman07-ragleo.hf.space _(set `GROQ_API_KEY` in Space secrets to activate)_ · [HF Space](https://huggingface.co/spaces/IamBatman07/RagLeo)
+
 ## Overview
 
 RagLeo is a **production-ready** Retrieval-Augmented Generation (RAG) system for PDF document Q&A. Built with **Flask**, **FAISS**, **LangChain**, and powered by **Groq's Llama 3 API**, it provides fast, accurate, and scalable document understanding.
@@ -16,12 +18,6 @@ RagLeo is a **production-ready** Retrieval-Augmented Generation (RAG) system for
 - **Structured Logging** - Rotating file + console logs, per-request timing
 - **Health & Stats Endpoints** - Uptime, document counts, query metrics
 - **pytest Test Suite** - Unit and integration tests with coverage reports
-
----
-
-## Screenshots
-![Chat Home Page](images/Chat_Home_Page.png)
-![Chat Home Page 2](images/Chat_Home_Page2.png)
 
 ## Architecture
 
