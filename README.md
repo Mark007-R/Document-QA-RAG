@@ -1,10 +1,10 @@
-# RagLeo - Production-Grade RAG Document Q&A System
+# Document-QA-RAG
 
 > 🔗 **Live demo:** https://iambatman07-ragleo.hf.space _(set `GROQ_API_KEY` in Space secrets to activate)_ · [HF Space](https://huggingface.co/spaces/IamBatman07/RagLeo)
 
 ## Overview
 
-RagLeo is a **production-ready** Retrieval-Augmented Generation (RAG) system for PDF document Q&A. Built with **Flask**, **FAISS**, **LangChain**, and powered by **Groq's Llama 3 API**, it provides fast, accurate, and scalable document understanding.
+Document-QA-RAG is a **production-ready** Retrieval-Augmented Generation (RAG) system for PDF document Q&A. Built with **Flask**, **FAISS**, **LangChain**, and powered by **Groq's Llama 3 API**, it provides fast, accurate, and scalable document understanding.
 
 ### Key Features
 
@@ -23,7 +23,7 @@ RagLeo is a **production-ready** Retrieval-Augmented Generation (RAG) system for
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                   RagLeo Flask App                       │
+│                   Document-QA-RAG Flask App                       │
 │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  │
 │  │   Routes     │  │   Services   │  │  Middleware  │  │
 │  └──────────────┘  └──────────────┘  └──────────────┘  │
@@ -42,7 +42,7 @@ RagLeo is a **production-ready** Retrieval-Augmented Generation (RAG) system for
 ## Project Structure
 
 ```
-RagLeo/
+Document-QA-RAG/
 ├── app.py                      # Application entry point & route definitions
 ├── requirements.txt            # Python dependencies
 ├── pyproject.toml              # Tool configuration (black, pytest, mypy)
@@ -99,7 +99,7 @@ RagLeo/
 
 ```bash
 git clone <repository-url>
-cd RagLeo
+cd Document-QA-RAG
 ```
 
 ### 2. Create a Virtual Environment
