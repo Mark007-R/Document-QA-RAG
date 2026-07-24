@@ -1,7 +1,5 @@
 # Document-QA-RAG
 
-> 🔗 **Live demo:** https://iambatman07-ragleo.hf.space _(set `GROQ_API_KEY` in Space secrets to activate)_ · [HF Space](https://huggingface.co/spaces/IamBatman07/RagLeo)
-
 ## Overview
 
 Document-QA-RAG is a **production-ready** Retrieval-Augmented Generation (RAG) system for PDF document Q&A. Built with **Flask**, **FAISS**, **LangChain**, and powered by **Groq's Llama 3 API**, it provides fast, accurate, and scalable document understanding.
