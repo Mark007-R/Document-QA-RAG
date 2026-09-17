@@ -6,54 +6,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard | RagLeo</title>
     <meta name="description" content="RagLeo Admin Dashboard - Monitor and manage your PDF Q&A system">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600;1,9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <style>
         .dashboard-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
             gap: 20px;
-            padding: 20px;
-            max-width: 1400px;
+            padding: 28px 24px 56px;
+            max-width: 1240px;
             margin: 0 auto;
         }
 
         .dashboard-header {
             grid-column: 1 / -1;
-            padding: 20px;
-            background: var(--bg-secondary);
-            border-radius: 8px;
+            padding: 24px 28px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
         }
 
         .dashboard-header h1 {
-            font-size: 24px;
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            letter-spacing: -0.025em;
+            line-height: 1.1;
+        }
+
+        .dashboard-subtitle {
+            margin-top: 8px;
+            font-family: var(--font-mono);
+            font-size: 0.66rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ink-3);
         }
 
         .card {
-            background: var(--bg-secondary);
-            border-radius: 8px;
-            padding: 20px;
-            border: 1px solid var(--border-color);
+            min-width: 0;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 22px 24px;
+            box-shadow: var(--shadow-sm);
+            transition: border-color var(--ease), box-shadow var(--ease), transform var(--ease);
+        }
+
+        .card:hover {
+            border-color: var(--line-strong);
+            box-shadow: var(--shadow-md);
         }
 
         .card h3 {
-            font-size: 16px;
-            margin-bottom: 16px;
-            color: var(--text-primary);
+            font-size: 1.12rem;
+            letter-spacing: -0.012em;
+            color: var(--ink);
+            margin-bottom: 14px;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .stat-card h3 {
+            font-family: var(--font-mono);
+            font-size: 0.66rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            line-height: 1.4;
+            color: var(--ink-3);
+            margin-bottom: 12px;
         }
 
         .stat-value {
-            font-size: 32px;
-            font-weight: bold;
-            color: var(--accent-primary);
-            margin-bottom: 8px;
+            font-family: var(--font-display);
+            font-size: 2.6rem;
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            color: var(--accent);
+            margin-bottom: 6px;
         }
 
         .stat-label {
-            font-size: 13px;
-            color: var(--text-secondary);
+            font-size: 0.85rem;
+            color: var(--ink-2);
         }
 
         .recent-queries {
@@ -61,72 +107,158 @@
         }
 
         .query-item {
-            background: var(--bg-tertiary);
-            padding: 12px;
-            border-radius: 6px;
+            background: var(--bg);
+            border: 1px solid var(--line);
+            border-left: 3px solid var(--accent);
+            border-radius: var(--radius-sm);
+            padding: 12px 14px;
             margin-bottom: 8px;
-            border-left: 3px solid var(--accent-primary);
+        }
+
+        .query-item:last-child {
+            margin-bottom: 0;
         }
 
         .query-item .query-text {
-            font-size: 13px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--ink);
             margin-bottom: 4px;
+            overflow-wrap: anywhere;
         }
 
         .query-item .query-meta {
-            font-size: 11px;
-            color: var(--text-secondary);
+            font-family: var(--font-mono);
+            font-size: 0.66rem;
+            letter-spacing: 0.02em;
+            color: var(--ink-3);
         }
 
         .system-health {
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            gap: 8px;
-            font-size: 14px;
+            gap: 9px;
+            padding: 7px 15px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: var(--bg);
+            font-family: var(--font-mono);
+            font-size: 0.66rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--ink-2);
         }
 
         .health-indicator {
-            width: 12px;
-            height: 12px;
+            width: 8px;
+            height: 8px;
+            flex-shrink: 0;
             border-radius: 50%;
-            background: var(--accent-primary);
+            background: var(--ok);
+            box-shadow: 0 0 0 3px var(--ok-tint);
         }
 
         .health-indicator.unhealthy {
-            background: var(--error-color);
+            background: var(--bad);
+            box-shadow: 0 0 0 3px var(--bad-tint);
+        }
+
+        .system-info {
+            font-size: 0.9rem;
+            line-height: 1.95;
+        }
+
+        .system-info strong {
+            margin-right: 6px;
+            font-family: var(--font-mono);
+            font-size: 0.64rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+        }
+
+        .system-info span {
+            color: var(--ink);
         }
 
         .action-buttons {
             display: flex;
+            flex-wrap: wrap;
             gap: 10px;
-            margin-top: 16px;
+            margin-top: 12px;
+        }
+
+        .card h3 + .action-buttons {
+            margin-top: 0;
+        }
+
+        .table-wrap {
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
+            background: var(--card);
         }
 
         table th,
         table td {
-            padding: 12px;
+            padding: 11px 14px;
             text-align: left;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--line);
         }
 
         table th {
-            background: var(--bg-tertiary);
-            font-weight: 500;
-            font-size: 13px;
-            color: var(--text-secondary);
+            background: var(--bg-alt);
+            border-bottom-color: var(--line-strong);
+            font-family: var(--font-mono);
+            font-size: 0.64rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            white-space: nowrap;
+            color: var(--ink-3);
         }
 
         table td {
-            font-size: 13px;
+            font-size: 0.88rem;
+            color: var(--ink-2);
         }
 
-        table tr:hover {
-            background: var(--bg-tertiary);
+        table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        table tbody tr:hover td {
+            background: var(--accent-tint);
+        }
+
+        table td.table-empty {
+            text-align: center;
+            color: var(--ink-3);
+        }
+
+        table .btn-small {
+            flex: none;
+        }
+
+        .doc-status {
+            display: inline-flex;
+            align-items: center;
+            padding: 3px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--ok-line);
+            background: var(--ok-tint);
+            color: var(--ok);
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
     </style>
 </head>
@@ -135,8 +267,8 @@
     <div class="dashboard-container">
         <div class="dashboard-header">
             <div>
-                <h1>RagLeo Admin Dashboard</h1>
-                <p style="color: var(--text-secondary); font-size: 13px;">Production Monitoring & Management</p>
+                <h1><em>RagLeo</em> Admin Dashboard</h1>
+                <p class="dashboard-subtitle">Production Monitoring & Management</p>
             </div>
             <div class="system-health">
                 <span class="health-indicator" id="healthIndicator"></span>
@@ -144,25 +276,25 @@
             </div>
         </div>
 
-        <div class="card">
+        <div class="card stat-card">
             <h3> Total Documents</h3>
             <div class="stat-value" id="totalDocs">-</div>
             <div class="stat-label">Processed PDFs</div>
         </div>
 
-        <div class="card">
+        <div class="card stat-card">
             <h3> Total Queries</h3>
             <div class="stat-value" id="totalQueries">-</div>
             <div class="stat-label">Questions asked</div>
         </div>
 
-        <div class="card">
+        <div class="card stat-card">
             <h3> Avg Response Time</h3>
             <div class="stat-value" id="avgResponseTime">-</div>
             <div class="stat-label">Seconds</div>
         </div>
 
-        <div class="card">
+        <div class="card stat-card">
             <h3> Storage Used</h3>
             <div class="stat-value" id="storageUsed">-</div>
             <div class="stat-label">File storage</div>
@@ -170,7 +302,7 @@
 
         <div class="card">
             <h3> System Information</h3>
-            <div style="font-size: 13px; line-height: 1.8;">
+            <div class="system-info">
                 <p><strong>Environment:</strong> <span id="environment">-</span></p>
                 <p><strong>Database:</strong> <span id="database">-</span></p>
                 <p><strong>Version:</strong> <span id="version">-</span></p>
@@ -198,13 +330,13 @@
         <div class="card recent-queries">
             <h3> Recent Documents</h3>
             <div id="recentDocs">
-                <p style="color: var(--text-secondary); font-size: 13px;">Loading...</p>
+                <p class="list-empty">Loading...</p>
             </div>
         </div>
 
         <div class="card" style="grid-column: 1 / -1;">
             <h3> All Documents</h3>
-            <div style="overflow-x: auto;">
+            <div class="table-wrap" style="overflow-x: auto;">
                 <table id="documentsTable">
                     <thead>
                         <tr>
@@ -218,7 +350,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td colspan="6" style="text-align: center; color: var(--text-secondary);">Loading...</td>
+                            <td colspan="6" class="table-empty">Loading...</td>
                         </tr>
                     </tbody>
                 </table>
@@ -245,11 +377,11 @@
                 if (data.status === 'healthy') {
                     indicator.classList.remove('unhealthy');
                     status.textContent = 'System Healthy';
-                    status.style.color = 'var(--accent-primary)';
+                    status.style.color = 'var(--ok)';
                 } else {
                     indicator.classList.add('unhealthy');
                     status.textContent = 'System Down';
-                    status.style.color = 'var(--error-color)';
+                    status.style.color = 'var(--bad)';
                 }
 
                 document.getElementById('environment').textContent = data.environment || 'N/A';
@@ -287,7 +419,7 @@
 
                 const recentDocs = document.getElementById('recentDocs');
                 if (documents.length === 0) {
-                    recentDocs.innerHTML = '<p style="color: var(--text-secondary); font-size: 13px;">No documents yet</p>';
+                    recentDocs.innerHTML = '<p class="list-empty">No documents yet</p>';
                 } else {
                     const recent = documents.slice(0, 5);
                     recentDocs.innerHTML = recent.map(doc => `
@@ -304,7 +436,7 @@
 
                 const tbody = document.querySelector('#documentsTable tbody');
                 if (documents.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--text-secondary);">No documents</td></tr>';
+                    tbody.innerHTML = '<tr><td colspan="6" class="table-empty">No documents</td></tr>';
                 } else {
                     tbody.innerHTML = documents.map(doc => `
                         <tr>
@@ -312,7 +444,7 @@
                             <td>${escapeHtml(doc.filename)}</td>
                             <td>${formatFileSize(doc.file_size || 0)}</td>
                             <td>${new Date(doc.uploaded_at).toLocaleDateString()}</td>
-                            <td><span style="color: var(--accent-primary);"> Active</span></td>
+                            <td><span class="doc-status"> Active</span></td>
                             <td>
                                 <button class="btn-small btn-danger" onclick="deleteDocument('${doc.id}')">
                                     Delete

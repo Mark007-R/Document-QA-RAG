@@ -94,11 +94,11 @@ async function loadDocuments() {
         updateDocumentSelect();
         
         if (AppState.documents.length === 0) {
-            DOM.documentsList.innerHTML = '<p style="color: var(--text-secondary); font-size: 13px;">No documents yet</p>';
+            DOM.documentsList.innerHTML = '<p class="list-empty">No documents yet</p>';
         }
     } catch (error) {
         console.error('Error loading documents:', error);
-        DOM.documentsList.innerHTML = '<p style="color: var(--error-color); font-size: 13px;">Failed to load documents</p>';
+        DOM.documentsList.innerHTML = '<p class="list-empty list-error">Failed to load documents</p>';
     }
 }
 
