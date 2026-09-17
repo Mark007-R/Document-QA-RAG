@@ -8,7 +8,7 @@
     <meta name="description" content="AI-powered PDF Question & Answer system with RAG (Retrieval-Augmented Generation)">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600;1,9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
 
@@ -49,7 +49,7 @@
                 <div class="sidebar-section">
                     <h3>Documents</h3>
                     <div id="documentsList" class="documents-list">
-                        <p style="color: var(--text-secondary); font-size: 13px;">Loading...</p>
+                        <p class="list-empty">Loading...</p>
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                 <div class="chat-header-main">
                     <button id="mobileMenuToggle" class="btn-menu" type="button" aria-label="Open menu">Menu</button>
                     <div>
-                        <h2>Ask Better Questions</h2>
+                        <h2>Ask <em>Better</em> Questions</h2>
                         <p class="chat-subtitle">Query your indexed documents with retrieval-augmented answers.</p>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
             <div class="chat-messages" id="chat">
                 <div class="welcome-message">
                     <p class="welcome-kicker">RAG Workspace</p>
-                    <p class="welcome-title">Welcome to RagLeo</p>
+                    <p class="welcome-title">Welcome to <em>RagLeo</em></p>
                     <p class="welcome-description">Upload a PDF, pick a document, and ask focused questions to get grounded responses fast.</p>
                     
                     <div class="features">
