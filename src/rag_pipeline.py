@@ -17,7 +17,7 @@ class RAGPipeline:
     def __init__(
         self, 
         embed_model_name: str = 'sentence-transformers/all-MiniLM-L6-v2',
-        groq_model_name: str = 'llama-3.3-70b-versatile',
+        groq_model_name: str = 'openai/gpt-oss-120b',
         api_key: Optional[str] = None,
     ):
         

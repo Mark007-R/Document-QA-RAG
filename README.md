@@ -2,7 +2,7 @@
 
 ## Overview
 
-Document-QA-RAG is a **production-ready** Retrieval-Augmented Generation (RAG) system for PDF document Q&A. Built with **Flask**, **FAISS**, **LangChain**, and powered by **Groq's Llama 3 API**, it provides fast, accurate, and scalable document understanding.
+Document-QA-RAG is a **production-ready** Retrieval-Augmented Generation (RAG) system for PDF document Q&A. Built with **Flask**, **FAISS**, **LangChain**, and powered by **Groq's API**, it provides fast, accurate, and scalable document understanding.
 
 ### Key Features
 
@@ -130,7 +130,7 @@ API_KEY_ENABLED=True
 API_KEYS=key1,key2
 
 # Optional overrides
-GROQ_MODEL_NAME=llama-3.3-70b-versatile
+GROQ_MODEL_NAME=openai/gpt-oss-120b
 DATABASE_URL=sqlite:///rag_leo.db
 FLASK_DEBUG=False
 ```
@@ -161,13 +161,12 @@ Visit: [http://localhost:5000](http://localhost:5000)
 - Configurable via `EMBED_MODEL_NAME`
 
 ### Generation Model (via Groq API)
-**`llama-3.3-70b-versatile`** (default) — configurable via `GROQ_MODEL_NAME`
+**`openai/gpt-oss-120b`** (default) — configurable via `GROQ_MODEL_NAME`
 
 | Model | Speed | Quality |
 |---|---|---|
-| `llama-3.1-8b-instant` | Fastest | Good |
-| `llama-3.1-70b-versatile` | Moderate | High |
-| `llama-3.3-70b-versatile` | Moderate | Best (recommended) |
+| `openai/gpt-oss-20b` | Fastest | Good |
+| `openai/gpt-oss-120b` | Moderate | Best (recommended) |
 
 ### Vector Index
 **FAISS `IndexFlatIP`**
@@ -187,7 +186,7 @@ All settings live in `src/config.py` and are read from the `.env` file via Pydan
 | `TOP_K_RETRIEVAL` | `5` | Chunks retrieved per query |
 | `LLM_MAX_TOKENS` | `1024` | Max tokens in generated answer |
 | `LLM_TEMPERATURE` | `0.3` | Sampling temperature (0.0–2.0) |
-| `GROQ_MODEL_NAME` | `llama-3.3-70b-versatile` | Groq model to use |
+| `GROQ_MODEL_NAME` | `openai/gpt-oss-120b` | Groq model to use |
 | `LLM_TIMEOUT` | `30` | Groq API timeout in seconds |
 | `LLM_MAX_RETRIES` | `2` | Groq API retry attempts |
 
@@ -202,7 +201,7 @@ All settings live in `src/config.py` and are read from the `.env` file via Pydan
 6️⃣ **Store** — Document record saved to SQLite with chunk count, file size, processing time  
 7️⃣ **Query** — User POSTs `{"doc_id": "...", "query": "What was the revenue growth?"}` to `/api/v1/ask`  
 8️⃣ **Retrieve** — Top-5 most similar chunks fetched via FAISS cosine search  
-9️⃣ **Generate** — Groq Llama 3 generates an answer from the retrieved chunks  
+9️⃣ **Generate** — The Groq model generates an answer from the retrieved chunks  
 🔟 **Respond** — Answer and source chunks returned; query logged to database  
 
 ## Performance

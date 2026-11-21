@@ -37,7 +37,7 @@ class Settings(BaseSettings):
     
     GROQ_API_KEY: str
     EMBED_MODEL_NAME: str = "sentence-transformers/all-MiniLM-L6-v2"
-    GROQ_MODEL_NAME: str = "llama-3.3-70b-versatile"
+    GROQ_MODEL_NAME: str = "openai/gpt-oss-120b"
     CHUNK_SIZE: int = 1000
     CHUNK_OVERLAP: int = 200
     TOP_K_RETRIEVAL: int = 5
